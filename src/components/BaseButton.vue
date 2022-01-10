@@ -1,7 +1,7 @@
 <template>
 <br/>Dima's component
   <div >
-    <button class="button" v-bind:class="{buttonGreen: !isRed }">Red or green</button>
+    <button class="button" v-bind:class="{buttonGreen: !isRed }"><slot></slot></button>
   </div>
 </template>
 

@@ -2,7 +2,8 @@
   <img :alt="alt" :src="imageSrc">
   <HelloWorld msg="false" money="42"/>
   <button @click="onClick">Magic</button>
-  <BaseButton :isRed="false"/>
+  <BaseButton :isRed="false"> Here we can put text </BaseButton>
+  <BaseButton :isRed="false"> Here we can put some other text </BaseButton>
   <BaseInput :isInput="false"/>
   <BaseInput/>
 
