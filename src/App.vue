@@ -1,15 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <img :alt="alt" :src="imageSrc">
+  <HelloWorld msg="false" money="42"/>
+  <button @click="onClick">Magic</button>
+  <BaseButton :isRed="false"/>
+  <BaseInput :isInput="false"/>
+  <BaseInput/>
+
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import BaseButton from "./components/BaseButton";
+import BaseInput from "./components/BaseInput";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    BaseInput,
+    BaseButton,
+    HelloWorld,
+  },
+  data(){
+    return {
+      msg: "Добро пожаловать в наш мир розовых пони",
+      imageSrc: "@/assets/logo.png",
+      alt: "Vue logo",
+    }
+  },
+  methods:{
+    onClick(){
+      this.msg = "Добро пожаловать в наш магический мир"
+    }
   }
 }
 </script>
