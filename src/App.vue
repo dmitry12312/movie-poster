@@ -2,8 +2,8 @@
   <img :alt="alt" :src="imageSrc">
   <HelloWorld msg="false" money="42"/>
   <button @click="onClick">Magic</button>
-  <BaseButton :isRed="false"> Here we can put text </BaseButton>
-  <BaseButton :isRed="false"> Here we can put some other text </BaseButton>
+  <BaseButton @baseClick="xyi" :isSubmit="true" > Submit </BaseButton>
+  <BaseButton @baseClick="xyi" :isSubmit="false"> Cancel </BaseButton>
   <BaseInput :isInput="false"/>
   <BaseInput/>
 
@@ -31,7 +31,11 @@ export default {
   methods:{
     onClick(){
       this.msg = "Добро пожаловать в наш магический мир"
-    }
+    },
+    xyi(text){
+      alert(text)
+    },
+
   }
 }
 </script>
