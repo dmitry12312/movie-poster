@@ -1,7 +1,8 @@
 <template>
 <br/>Dima's component
-  <div >
-    <button class="button" v-bind:class="{buttonGreen: !isRed }"><slot></slot></button>
+  <div>
+    <button @click="$emit('baseClick','Submitted!')" v-if="isSubmit" class="buttonGreen" >Submit</button>
+    <button @click="$emit('baseClick','Canceled!')" v-else class="button">Cancel</button>
   </div>
 </template>
 
@@ -9,10 +10,10 @@
 export default {
   name: "BaseButton",
   props: {
-    isRed: {
+    isSubmit: {
       type: Boolean,
       default: true
-    }
+    },
   }
 }
 </script>
