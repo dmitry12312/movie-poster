@@ -1,5 +1,6 @@
 <template>
   <img :alt="alt" :src="imageSrc">
+  <HelloWorld msg="false" money="42"/>
   <button @click="onClick">Magic</button>
   <BaseButton :isRed="false"/>
   <BaseInput :isInput="false"/>
@@ -8,6 +9,7 @@
 </template>
 
 <script>
+import HelloWorld from './components/HelloWorld.vue'
 import BaseButton from "./components/BaseButton";
 import BaseInput from "./components/BaseInput";
 
@@ -16,6 +18,7 @@ export default {
   components: {
     BaseInput,
     BaseButton,
+    HelloWorld,
   },
   data(){
     return {
