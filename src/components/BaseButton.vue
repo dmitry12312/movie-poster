@@ -1,9 +1,10 @@
 <template>
-<br/>Dima's component
+<br/>
   <div>
-    <button @click="$emit('baseClick','Submitted!')" v-if="isSubmit" class="buttonGreen" >Submit</button>
-    <button @click="$emit('baseClick','Canceled!')" v-else class="button">Cancel</button>
+    <button @click="$emit('baseClick','Submitted!')" v-if="isSubmit" class="buttonGreen" ><slot>Submit</slot></button>
+    <button @click="$emit('baseClick','Canceled!')" v-else class="button"><slot>Cancel</slot></button>
   </div>
+
 </template>
 
 <script>
