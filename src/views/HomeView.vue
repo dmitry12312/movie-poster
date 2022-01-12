@@ -1,5 +1,5 @@
 <template>
-<h1>It's a home component</h1>
+<h1>Домашняя страница розовых пони</h1>
 </template>
 
 <script>

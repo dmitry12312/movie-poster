@@ -1,10 +1,14 @@
 <template>
-<h2>It's about component</h2>
+  <h1>Кто такие эти пони?</h1>
 </template>
 
 <script>
+
+// import BaseSlots from "../components/BaseSlots";
+// import BaseButton from "../components/BaseButton";
 export default {
-  name: "AboutView"
+  name: "AboutView",
+  components: {}
 }
 </script>
 
