@@ -1,6 +1,6 @@
 <template>
   <ul id="menu">
-    <li id="home"><router-link to="/"><img src="../../../../Downloads/pinkPony.jpeg" height="23" width="25" alt="Home"/></router-link></li>
+    <li id="home"><router-link to="/"><img src="../assets/img/pinkPony.jpeg" height="23" width="25" alt="Home"/></router-link></li>
     <li><router-link to="/faq">Faq</router-link></li>
     <li><router-link to="/about">About</router-link></li>
   </ul>
