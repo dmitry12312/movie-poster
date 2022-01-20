@@ -2,7 +2,7 @@ import { createWebHistory, createRouter } from "vue-router";
 import HomeView from "./views/HomeView";
 import AboutView from "./views/AboutView";
 import FaqView from "./views/FaqView";
-
+import NotFound from "./views/404";
 
 const routes = [
     {
@@ -20,6 +20,11 @@ const routes = [
         name: "Faq",
         component: FaqView,
     },
+    {
+        path: "/:pathMatch(.*)*",
+        name:"notFound",
+        component: NotFound,
+    }
 ];
 
 const router = createRouter({

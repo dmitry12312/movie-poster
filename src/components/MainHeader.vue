@@ -27,6 +27,16 @@ export default {
    background-color: rgba(204, 138, 181, 0.85);
    justify-content: center;
  }
+ .menu a{
+   color: #fff;
+   text-decoration: none;
+ }
+ .menu li{
+   list-style-type: none;
+ }
+ .menu a:hover{
+    background-color: #8AB8CC;
+ }
  .header-link{
    display: inline-flex;
    flex-direction: row;
