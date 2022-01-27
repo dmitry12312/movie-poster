@@ -4,7 +4,7 @@
 <!--  <router-link to="/faq">Here u can find questions</router-link>-->
 
   <router-view></router-view>
-footer
+
 
 </template>
 

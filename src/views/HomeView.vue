@@ -1,10 +1,44 @@
 <template>
-<h1>Домашняя страница розовых пони</h1>
+  <div>
+    <h1>Домашняя страница розовых пони</h1>
+    {{ ponyColor }}
+    {{ sqr }}
+    <input  v-model="ponyCountModel" @input="onInputChange">
+    {{ ponyCount }}
+    <!--    <base-button @baseClick="baseClickHandler"></base-button>-->
+  </div>
 </template>
 
 <script>
+// import BaseButton from "../components/BaseButton";
+import {mapGetters} from "vuex";
+
 export default {
-  name: "HomeView"
+  name: "HomeView",
+  // components: {BaseButton},
+  data() {
+    return {
+      ponyCountModel: this.$store.getters.ponyCount, // исправил
+    }
+  },
+  computed: {
+    ...mapGetters(['ponyCount']),
+    ponyColor() {
+      return this.$store.state.ponyColor;
+    },
+    sqr() {
+      return Math.sqrt(this.$store.state.ponyCount);
+    },
+
+  },
+  methods: {
+    // baseClickHandler(msg){
+    //   alert(msg);
+    // }
+    onInputChange() {
+      this.$store.commit('SET_PONY_COUNT', this.ponyCountModel);
+    }
+  },
 }
 </script>
 
