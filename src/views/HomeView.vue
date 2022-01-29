@@ -3,7 +3,7 @@
     <h1>Домашняя страница розовых пони</h1>
     {{ ponyColor }}
     {{ sqr }}
-    <input  v-model="ponyCountModel" @input="onInputChange">
+    <input ref="input" v-model="ponyCountModel" @input="onInputChange">
     {{ ponyCount }}
     <!--    <base-button @baseClick="baseClickHandler"></base-button>-->
   </div>
@@ -18,7 +18,7 @@ export default {
   // components: {BaseButton},
   data() {
     return {
-      ponyCountModel: this.$store.getters.ponyCount, // исправил
+      ponyCountModel: 0, // исправил
     }
   },
   computed: {
@@ -38,6 +38,9 @@ export default {
     onInputChange() {
       this.$store.commit('SET_PONY_COUNT', this.ponyCountModel);
     }
+  },
+  created(){
+    this.ponyCountModel = this.ponyCount;
   },
 }
 </script>
