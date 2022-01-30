@@ -8,6 +8,9 @@
     <div v-if="this.personInfo">
       {{ personInfo.query }}
     </div>
+    <div>
+      {{ btcCurrency }}
+    </div>
   </div>
 </template>
 
@@ -25,6 +28,7 @@ export default {
     ...mapGetters([
         'ponyCount',
         'personInfo',
+        'btcCurrency',
     ]),
     ponyColor() {
       return this.$store.state.ponyColor;
@@ -37,6 +41,7 @@ export default {
   methods: {
     ...mapActions([
         'fetchFata',
+        'btcCur',
     ]),
     onInputChange() {
       this.$store.commit('SET_PONY_COUNT', this.ponyCountModel);
@@ -45,6 +50,7 @@ export default {
    created() {
     this.ponyCountModel = this.ponyCount;
     this.fetchFata();
+    this.btcCur();
    },
 }
 </script>

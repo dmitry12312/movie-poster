@@ -4,6 +4,9 @@ const mutations = {
     },
     PERSON_UPDATE(state, person){
         state.person = person;
+    },
+    BTC_CURRENCY(state, btc){
+        state.btc = btc;
     }
 }
 export default mutations;
