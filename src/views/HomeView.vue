@@ -2,27 +2,30 @@
   <div>
     <h1>Домашняя страница розовых пони</h1>
     {{ ponyColor }}
-    {{ sqr }}
-    <input ref="input" v-model="ponyCountModel" @input="onInputChange">
+    <br>Sqrt =  {{ sqr }}
+    <input v-model="ponyCountModel" @input="onInputChange">
     {{ ponyCount }}
-    <!--    <base-button @baseClick="baseClickHandler"></base-button>-->
+    <div v-if="this.personInfo">
+      {{ personInfo.query }}
+    </div>
   </div>
 </template>
 
 <script>
-// import BaseButton from "../components/BaseButton";
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   name: "HomeView",
-  // components: {BaseButton},
   data() {
     return {
-      ponyCountModel: 0, // исправил
+      ponyCountModel: 0,
     }
   },
   computed: {
-    ...mapGetters(['ponyCount']),
+    ...mapGetters([
+        'ponyCount',
+        'personInfo',
+    ]),
     ponyColor() {
       return this.$store.state.ponyColor;
     },
@@ -32,16 +35,17 @@ export default {
 
   },
   methods: {
-    // baseClickHandler(msg){
-    //   alert(msg);
-    // }
+    ...mapActions([
+        'fetchFata',
+    ]),
     onInputChange() {
       this.$store.commit('SET_PONY_COUNT', this.ponyCountModel);
     }
   },
-  created(){
+   created() {
     this.ponyCountModel = this.ponyCount;
-  },
+    this.fetchFata();
+   },
 }
 </script>
 
