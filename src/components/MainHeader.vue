@@ -8,6 +8,9 @@
       <li class="nav">
         <router-link to="/about">About</router-link>
       </li>
+      <li class="nav">
+        <router-link to="/crypto">Crypto</router-link>
+      </li>
     </ul>
   </div>
 </template>

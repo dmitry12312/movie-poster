@@ -4,8 +4,6 @@
 
 <script>
 
-// import BaseSlots from "../components/BaseSlots";
-// import BaseButton from "../components/BaseButton";
 export default {
   name: "AboutView",
   components: {}

@@ -72,7 +72,7 @@ export default {
     },
     setCurrencyEth() {
       localStorage.setItem('currentCurrencyEth', this.currencyEth);
-    }
+    },
   },
   created() {
     this.ponyCountModel = this.ponyCount;

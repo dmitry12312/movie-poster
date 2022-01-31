@@ -3,6 +3,7 @@ import HomeView from "./views/HomeView";
 import AboutView from "./views/AboutView";
 import FaqView from "./views/FaqView";
 import NotFound from "./views/404";
+import CryptoView from "./views/CryptoView";
 
 const routes = [
     {
@@ -24,6 +25,11 @@ const routes = [
         path: "/:pathMatch(.*)*",
         name:"notFound",
         component: NotFound,
+    },
+    {
+        path: "/crypto",
+        name: "Crypto",
+        component: CryptoView,
     }
 ];
 
