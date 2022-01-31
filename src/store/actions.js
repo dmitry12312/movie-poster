@@ -1,13 +1,18 @@
 const actions = {
-    async fetchFata({commit}){
+    async fetchFata({commit}) {
         let response = await fetch('/mock/mock.json');
         let person = await response.json();
         commit('PERSON_UPDATE', person);
     },
-    async btcCur({commit}){
+    async btcCur({commit}) {
         let response = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json');
         let btc = await response.json();
         commit('BTC_CURRENCY', btc);
+    },
+    async ethCur({commit}){
+        let response = await fetch('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=BTC,USD,EUR,GBP');
+        let eth = await response.json();
+        commit('ETH_CURRENCY', eth);
     }
 }
 export default actions;

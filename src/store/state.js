@@ -3,6 +3,7 @@ const state = {
     ponyColor: 'pink',
     ponyCount: 9,
     person: null,
-    btc: 0,
+    btc: null,
+    eth: null,
 }
 export default state;

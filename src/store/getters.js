@@ -5,8 +5,11 @@ const getters = {
     personInfo(state){
         return state.person;
     },
-    btcCurrency(state){
-        return state.btc.bpi.USD.rate;
+    getBtcCurrency: (state) => (currency) => {
+        return state.btc?.bpi[currency].rate;
+    },
+    getEthCurrency: (state) => (currency) => {
+        return state.eth?.[currency];
     }
 }
 export default getters;

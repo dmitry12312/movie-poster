@@ -7,6 +7,9 @@ const mutations = {
     },
     BTC_CURRENCY(state, btc){
         state.btc = btc;
+    },
+    ETH_CURRENCY(state, eth){
+        state.eth = eth;
     }
 }
 export default mutations;
