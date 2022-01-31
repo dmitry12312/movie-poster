@@ -8,20 +8,21 @@
     <div v-if="this.personInfo">
       {{ personInfo.query }}
     </div>
-    <div class="crypto" v-if="getBtcCurrency(currency)">
-      <select v-model="currency" @change="setCurrency">Choose currency
+    <div class="crypto" v-if="getBtcCurrency(currencyBtc)">
+      <select class="currSel" v-model="currencyBtc" @change="setCurrencyBtc">Choose currency
         <option>USD</option>
         <option>GBP</option>
         <option>EUR</option>
       </select>
-      <br><b class="btcText">{{ currency }}/BTC</b>
-      {{ getBtcCurrency(currency) }}
+      <br><b class="btcText">{{ currencyBtc }}/BTC</b>
+      {{ getBtcCurrency(currencyBtc) }}
     </div>
     <div class="crypto" v-if="getEthCurrency(currencyEth)">
-      <select v-model="currencyEth" @change="setCurrencyEth">Choose currency
+      <select class="currSel" v-model="currencyEth" @change="setCurrencyEth">Choose currency
         <option>USD</option>
         <option>GBP</option>
         <option>EUR</option>
+        <option>BTC</option>
       </select>
       <br><b class="ethText">{{ currencyEth }}/ETH</b>
       {{ getEthCurrency(currencyEth) }}
@@ -38,7 +39,7 @@ export default {
   data() {
     return {
       ponyCountModel: 0,
-      currency: 'USD',
+      currencyBtc: 'USD',
       currencyEth: 'USD',
     }
   },
@@ -66,8 +67,8 @@ export default {
     onInputChange() {
       this.$store.commit('SET_PONY_COUNT', this.ponyCountModel);
     },
-    setCurrency() {
-      localStorage.setItem('currentCurrency', this.currency);
+    setCurrencyBtc() {
+      localStorage.setItem('currentCurrencyBtc', this.currencyBtc);
     },
     setCurrencyEth() {
       localStorage.setItem('currentCurrencyEth', this.currencyEth);
@@ -78,7 +79,7 @@ export default {
     this.fetchFata();
     this.btcCur();
     this.ethCur();
-    this.currency = localStorage.getItem('currentCurrency') ? localStorage.getItem('currentCurrency') : 'USD';
+    this.currencyBtc = localStorage.getItem('currentCurrencyBtc') ? localStorage.getItem('currentCurrencyBtc') : 'USD';
     this.currencyEth = localStorage.getItem('currentCurrencyEth') ? localStorage.getItem('currentCurrencyEth') : 'USD';
   },
 }
@@ -94,5 +95,8 @@ export default {
   margin: 1%;
   padding: 1px;
   border: solid rgba(204, 138, 181, 0.85);
+}
+.currSel{
+  border: none;
 }
 </style>

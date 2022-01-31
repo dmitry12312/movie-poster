@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const actions = {
     async fetchFata({commit}) {
         let response = await fetch('/mock/mock.json');
@@ -5,13 +7,13 @@ const actions = {
         commit('PERSON_UPDATE', person);
     },
     async btcCur({commit}) {
-        let response = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json');
-        let btc = await response.json();
+        let response =  await axios.get('https://api.coindesk.com/v1/bpi/currentprice.json');
+        let btc = await response.data;
         commit('BTC_CURRENCY', btc);
     },
     async ethCur({commit}){
-        let response = await fetch('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=BTC,USD,EUR,GBP');
-        let eth = await response.json();
+        let response = await axios.get('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=BTC,USD,EUR,GBP');
+        let eth = await response.data;
         commit('ETH_CURRENCY', eth);
     }
 }
