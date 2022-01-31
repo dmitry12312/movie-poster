@@ -1,5 +1,6 @@
 <template>
   <h1>Hello to our crypto world</h1>
+  <button type="submit" @click="updateCurrency">Update currencies</button>
   <div class="crypto" v-if="getBtcCurrency(currencyBtc)">
     <select class="currSel" v-model="currencyBtc" @change="setCurrencyBtc">Choose currency
       <option>USD</option>
@@ -50,6 +51,11 @@ export default {
     setCurrencyEth() {
       localStorage.setItem('currentCurrencyEth', this.currencyEth);
     },
+    updateCurrency(){
+      setInterval(async () => {
+        await this.ethCur();
+      }, onclick);
+    }
   },
   created() {
 
