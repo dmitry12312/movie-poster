@@ -3,10 +3,6 @@ import state from "./state";
 import mutations from "./mutations";
 import getters from "./getters";
 import actions from "./actions";
-import localStorage from 'vue-localstorage'
-
-
-
 
 
 const store = createStore({
@@ -14,7 +10,6 @@ const store = createStore({
     mutations,
     getters,
     actions,
-    localStorage,
 })
 
 export default store;

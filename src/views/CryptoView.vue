@@ -52,9 +52,11 @@ export default {
       localStorage.setItem('currentCurrencyEth', this.currencyEth);
     },
     updateCurrency(){
-      setInterval(async () => {
-        await this.ethCur();
-      }, onclick);
+      setInterval( () => {
+        console.log('done')
+        this.ethCur();
+        this.btcCur();
+      }, 1000);
     }
   },
   created() {
