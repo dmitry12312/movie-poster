@@ -4,6 +4,7 @@ import AboutView from "./views/AboutView";
 import FaqView from "./views/FaqView";
 import NotFound from "./views/404";
 import CryptoView from "./views/CryptoView";
+import MoviesView from "./views/MoviesView";
 
 const routes = [
     {
@@ -30,6 +31,11 @@ const routes = [
         path: "/crypto",
         name: "Crypto",
         component: CryptoView,
+    },
+    {
+        path: "/films",
+        name:"Films",
+        component: MoviesView,
     }
 ];
 

@@ -1,7 +1,7 @@
 <template>
   <h1>Hello to our crypto world</h1>
-  <button type="submit" @click="updateCurrency">Update currencies</button>
-  <div class="crypto" v-if="getBtcCurrency(currencyBtc)">
+  <button class="updateButton" type="submit" @click="updateCurrency"><b>Update currencies</b></button>
+  <br><div class="crypto" v-if="getBtcCurrency(currencyBtc)">
     <select class="currSel" v-model="currencyBtc" @change="setCurrencyBtc">Choose currency
       <option>USD</option>
       <option>GBP</option>
@@ -70,6 +70,14 @@ export default {
 </script>
 
 <style scoped>
+.updateButton{
+  position: center;
+  margin: 0 auto;
+  padding: 0;
+  width: 15%;
+  border: solid rgba(204, 138, 181, 0.85);
+  color: rgba(128, 128, 128, 0.99);
+}
 .crypto {
   display: inline-block;
   justify-content: center;

@@ -10,6 +10,9 @@ const mutations = {
     },
     ETH_CURRENCY(state, eth){
         state.eth = eth;
+    },
+    MOVIE_UPDATE(state, movieList){
+        state.movieList = movieList;
     }
 }
 export default mutations;

@@ -11,6 +11,9 @@
       <li class="nav">
         <router-link to="/crypto">Crypto</router-link>
       </li>
+      <li class="nav">
+        <router-link to="/films">Films</router-link>
+      </li>
     </ul>
   </div>
 </template>

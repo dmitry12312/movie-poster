@@ -10,6 +10,9 @@ const getters = {
     },
     getEthCurrency: (state) => (currency) => {
         return state.eth?.[currency];
-    }
+    },
+    getMovies(state){
+        return state.movieList;
+    },
 }
 export default getters;
