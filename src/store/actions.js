@@ -18,8 +18,11 @@ const actions = {
     },
     async getMovieList({commit},{offset, limit}){
         let response = await axios.get(`http://react-cdp-api.herokuapp.com/movies?offset=${offset}&limit=${limit}`);
+        console.log(response.data, 'ssssss')
         let movieList = await response.data.data;
+        let totalMovies = await response.data.total;
         commit('MOVIE_UPDATE', movieList);
+        commit('TOTAL_MOVIE',totalMovies)
         console.log(movieList);
     },
 

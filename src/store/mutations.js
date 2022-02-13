@@ -11,8 +11,11 @@ const mutations = {
     ETH_CURRENCY(state, eth){
         state.eth = eth;
     },
-    MOVIE_UPDATE(state, movieList){
-        state.movieList = movieList;
+    MOVIE_UPDATE(state, movieList ){
+            state.movieList = movieList;
+    },
+    TOTAL_MOVIE(state, totalMovies){
+        state.totalMovies = totalMovies;
     }
 }
 export default mutations;

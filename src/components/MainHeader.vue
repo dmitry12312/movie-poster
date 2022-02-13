@@ -41,7 +41,7 @@ export default {
    list-style-type: none;
  }
  .menu a:hover{
-    background-color: #8AB8CC;
+    background-color: #555555;
  }
  .header-link{
    display: inline-flex;

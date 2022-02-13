@@ -14,5 +14,8 @@ const getters = {
     getMovies(state){
         return state.movieList;
     },
+    getTotalMovies(state){
+        return state.totalMovies;
+    }
 }
 export default getters;

@@ -6,5 +6,6 @@ const state = {
     btc: null,
     eth: null,
     movieList: null,
+    totalMovies: null,
 }
 export default state;
