@@ -15,9 +15,9 @@
   </div>
   <div class="pagination" v-else>
     <router-link class="active" exact :to="{name: baseRoute, query: pageLink(1)}"> 1 </router-link>
-    <router-link  :to="{name: baseRoute, query: pageLink(2)}"> 2 </router-link>
-    <router-link  :to="{name: baseRoute, query:{ page: 3 }}"> 3 </router-link>
-    <router-link  :to="{name: baseRoute, query:{ page : totalPages}}"> {{ '>>' }} </router-link>
+    <router-link  exact :to="{name: baseRoute, query: pageLink(2)}"> 2 </router-link>
+    <router-link  :to="{name: baseRoute, query: pageLink(3)}"> 3 </router-link>
+    <router-link  :to="{name: baseRoute, query: pageLink(totalPages)}"> {{ '>>' }} </router-link>
   </div>
 </div>
 </template>
@@ -42,7 +42,7 @@ export default {
   methods: {
     pageLink(page){
       if (this.$route.query){
-        let query = this.$route.query
+        let query = {...this.$route.query}
         query.page = page
         return query
       } else {

@@ -79,10 +79,18 @@ export default {
   },
   watch: {
     $route(){
+      if(this.$route.query.search){
+        this.search = this.$route.query.search;
+        this.searchBy = this.$route.query.searchBy;
+      }
       this.movieListRequest();
     }
   },
   created() {
+    if(this.$route.query.search){
+      this.search = this.$route.query.search;
+      this.searchBy = this.$route.query.searchBy;
+    }
     this.movieListRequest()
   }
 }
