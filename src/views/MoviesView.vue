@@ -5,10 +5,9 @@
         <button v-if="search" type="reset" @click="clearQuery">Clear</button>
     </div>
     <div class="search-by-button">
-        <p> SEARCH BY </p>
-        <button type="submit" @click="searchByTitle">Title</button>
-        <button type="submit" @click="searchByGenre">Genre</button>
-    zzzzzzzz  {{ searchBy }}
+        <p class="search-by-text"> SEARCH BY </p>
+        <button class="btn" :class="{'active-btn': searchBy !== 'genres'}" type="submit" @click="searchByTitle">Title</button>
+        <button class="btn" :class="{'active-btn': searchBy === 'genres'}" type="submit" @click="searchByGenre">Genre</button>
     </div>
   </div>
 <div class="container" v-if="getMovies">
@@ -117,13 +116,12 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   background-image: url(../assets/img/backgroundFilms.jpeg);
   width: 100%;
   height: 390px;
   color: #ffffff;
 }
-button{
+.search-input button{
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -137,6 +135,22 @@ button{
 .search-by-button{
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  width: 90%;
 }
-
+.btn{
+  background-color: rgba(35, 35, 35, 0.8);
+  width: 80px;
+  color: #ffffff;
+  border: none;
+  height: 35px;
+}
+.active-btn{
+  background-color: rgba(204, 138, 181, 0.85);
+}
+.search-by-text{
+  display: inline-flex;
+  justify-content: flex-start;
+  margin-right: 100px;
+}
 </style>

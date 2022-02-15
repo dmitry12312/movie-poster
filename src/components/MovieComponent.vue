@@ -2,7 +2,7 @@
   <div>
     <div class="film-container">
       <div class="img-container">
-        <img class="movieImg" :src="requiredProps.poster_path" alt="poster">
+        <img class="movieImg" :src="requiredProps.poster_path" alt="POSTER">
       </div>
       <div class="film-info">
         <div class="film-row">

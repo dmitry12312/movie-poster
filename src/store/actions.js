@@ -29,7 +29,6 @@ const actions = {
         let totalMovies = await response.data.total;
         commit('MOVIE_UPDATE', movieList);
         commit('TOTAL_MOVIE',totalMovies)
-        console.log(movieList);
     },
 
 }
