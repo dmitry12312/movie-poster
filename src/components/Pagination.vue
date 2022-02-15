@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="pagination-container">
   <div class="pagination" v-if="currentPage > 1 && (currentPage < totalPages)">
     <router-link  :to="{name: baseRoute, query:{ page : 1}}"> {{ '<<' }} </router-link>
     <router-link  :to="{ name: baseRoute, query:{ page : currentPage - 1 }}"> {{ currentPage - 1 }} </router-link>
@@ -65,5 +65,8 @@ export default {
 }
 .pagination a:hover{
   color: #555555;
+}
+.pagination-container{
+  margin-top: 30px;
 }
 </style>
