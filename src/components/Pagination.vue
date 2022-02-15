@@ -1,7 +1,7 @@
 <template>
 <div class="pagination-container">
   <div class="pagination" v-if="currentPage > 1 && (currentPage < totalPages)">
-    <router-link  :to="{name: baseRoute, query:{ page : 1}}"> {{ '<<' }} </router-link>
+    <router-link  :to="pageLink(1)"> {{ '<<' }} </router-link>
     <router-link  :to="{ name: baseRoute, query:{ page : currentPage - 1 }}"> {{ currentPage - 1 }} </router-link>
     <router-link class="active" exact :to="{ name: baseRoute, query:{ page : currentPage }}"> {{ currentPage }} </router-link>
     <router-link  :to="{ name: baseRoute, query:{ page : currentPage + 1 }}"> {{ currentPage + 1 }} </router-link>
@@ -14,8 +14,8 @@
     <router-link class="active" exact :to="{ name: baseRoute, query:{ page: currentPage }}"> {{ currentPage }} </router-link>
   </div>
   <div class="pagination" v-else>
-    <router-link class="active" exact :to="{ name:baseRoute, query:{ page: 1 }}"> 1 </router-link>
-    <router-link  :to="{ name: baseRoute, query:{ page: 2 }}"> 2 </router-link>
+    <router-link class="active" exact :to="pageLink(1)"> 1 </router-link>
+    <router-link  :to="pageLink(2)"> 2 </router-link>
     <router-link  :to="{ name: baseRoute, query:{ page: 3 }}"> 3 </router-link>
     <router-link  :to="{name: baseRoute, query:{ page : totalPages}}"> {{ '>>' }} </router-link>
   </div>
@@ -38,8 +38,19 @@ export default {
       type: Number,
       default: 10,
     },
-
-  }
+  },
+  methods: {
+    pageLink(page){
+      console.log('hereeeeeeeeee')
+      if (this.$route.query){
+        let query = this.$route.query
+        query.page = page
+        return { name: this.baseRoute, query}
+      } else {
+        return { name: this.baseRoute, query:{ page }}
+      }
+    }
+  },
 }
 </script>
 
