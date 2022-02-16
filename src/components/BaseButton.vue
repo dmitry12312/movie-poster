@@ -1,7 +1,7 @@
 <template>
 <br/>
   <div>
-    <button @click="$emit('baseClick','Submitted!')" v-if="isSubmit" class="buttonGreen" ><slot>Submit</slot></button>
+    <button @click="clickListener('Submtied')" v-if="isSubmit" class="buttonGreen" ><slot>Submit</slot></button>
     <button @click="$emit('baseClick','Canceled!')" v-else class="button"><slot>Cancel</slot></button>
   </div>
 
@@ -15,6 +15,11 @@ export default {
       type: Boolean,
       default: true
     },
+  },
+  methods: {
+    clickListener(text){
+      this.$emit('baseClick', text)
+    }
   }
 }
 </script>
