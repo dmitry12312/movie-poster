@@ -34,13 +34,14 @@
 import {mapActions, mapGetters} from "vuex";
 import MovieComponent from "../components/MovieComponent";
 import Pagination from "../components/Pagination";
-
+const FILMS_PER_PAGE = 9;
 export default {
   name: "MoviesView",
   components: {Pagination, MovieComponent},
   data(){
     return {
       offset: 0,
+      FILMS_PER_PAGE,
       search: '',
       searchBy: 'title',
       sortBy: 'release_date'
@@ -52,21 +53,21 @@ export default {
       'getTotalMovies',
     ]),
     totalPages(){
-      return Math.ceil(this.getTotalMovies / 9);
+      return Math.ceil(this.getTotalMovies / this.FILMS_PER_PAGE);
     }
   },
   methods: {
     ...mapActions(['getMovieList']),
 
     movieListRequest() {
-      this.offset = this.$route.query.page ? (this.$route.query.page - 1) * 9 : 0;
+      this.offset = this.$route.query.page ? (this.$route.query.page - 1) * this.FILMS_PER_PAGE : 0;
       this.getMovieList({
         search: this.search,
         searchBy: this.searchBy,
         sortBy: this.sortBy,
         sortOrder: 'desc',
         offset: this.offset,
-        limit: 9,
+        limit: this.FILMS_PER_PAGE,
       })
     },
     setQuery(){
