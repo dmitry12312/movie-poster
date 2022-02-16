@@ -2,20 +2,24 @@
 <div class="pagination-container">
   <div class="pagination" v-if="currentPage > 1 && (currentPage < totalPages)">
     <router-link  :to="{name: baseRoute, query: pageLink(1)}"> {{ '<<' }} </router-link>
-    <router-link  :to="{ name: baseRoute, query:{ page : currentPage - 1 }}"> {{ currentPage - 1 }} </router-link>
-    <router-link class="active" exact :to="{ name: baseRoute, query:{ page : currentPage }}"> {{ currentPage }} </router-link>
-    <router-link  :to="{ name: baseRoute, query:{ page : currentPage + 1 }}"> {{ currentPage + 1 }} </router-link>
-    <router-link  :to="{name: baseRoute, query:{ page : totalPages}}"> {{ '>>' }} </router-link>
+    <router-link  :to="{ name: baseRoute, query: pageLink(currentPage - 1) }"> {{ currentPage - 1 }} </router-link>
+    <router-link class="active" exact :to="{ name: baseRoute, query: pageLink(currentPage) }"> {{ currentPage }} </router-link>
+    <router-link  :to="{ name: baseRoute, query: pageLink(currentPage + 1)}"> {{ currentPage + 1 }} </router-link>
+    <router-link  :to="{name: baseRoute, query: pageLink(totalPages)}"> {{ '>>' }} </router-link>
+  </div>
+  <div class="pagination" v-else-if="totalPages === 2">
+    <router-link :class="{active: Number(this.$route.query.page) === 1 || !this.$route.query.page}" exact :to="{ name: baseRoute, query: pageLink(1) }"> 1 </router-link>
+    <router-link :class="{active: Number(this.$route.query.page) === 2}" exact :to="{name: baseRoute, query: pageLink(2)}"> 2 </router-link>
   </div>
   <div class="pagination" v-else-if="currentPage === totalPages">
-    <router-link  :to="{name: baseRoute, query:{ page : 1}}"> {{ '<<' }} </router-link>
-    <router-link  :to="{ name: baseRoute, query : { page : currentPage - 2 }}"> {{ currentPage - 2 }} </router-link>
-    <router-link  :to="{ name: baseRoute, query : { page : currentPage - 1 }}"> {{ currentPage - 1 }} </router-link>
-    <router-link class="active" exact :to="{ name: baseRoute, query:{ page: currentPage }}"> {{ currentPage }} </router-link>
+    <router-link  :to="{name: baseRoute, query: pageLink(1)}"> {{ '<<' }} </router-link>
+    <router-link  :to="{ name: baseRoute, query : pageLink(currentPage - 2)}"> {{ currentPage - 2 }} </router-link>
+    <router-link  :to="{ name: baseRoute, query : pageLink(currentPage - 1)}"> {{ currentPage - 1 }} </router-link>
+    <router-link class="active" exact :to="{ name: baseRoute, query: pageLink(currentPage)}"> {{ currentPage }} </router-link>
   </div>
   <div class="pagination" v-else>
     <router-link class="active" exact :to="{name: baseRoute, query: pageLink(1)}"> 1 </router-link>
-    <router-link  exact :to="{name: baseRoute, query: pageLink(2)}"> 2 </router-link>
+    <router-link  :to="{name: baseRoute, query: pageLink(2)}"> 2 </router-link>
     <router-link  :to="{name: baseRoute, query: pageLink(3)}"> 3 </router-link>
     <router-link  :to="{name: baseRoute, query: pageLink(totalPages)}"> {{ '>>' }} </router-link>
   </div>
@@ -23,6 +27,7 @@
 </template>
 
 <script>
+
 export default {
   name: "Pagination",
   props: {

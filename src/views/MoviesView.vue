@@ -10,12 +10,24 @@
         <button class="btn" :class="{'active-btn': searchBy === 'genres'}" type="submit" @click="searchByGenre">Genre</button>
     </div>
   </div>
+  <div class="filter-container">
+    <p v-if="getTotalMovies > 1" class="found-films-count"> {{ getTotalMovies }} movie found </p>
+    <div class="sort-filter">
+      <p> SORT BY </p>
+      <button class="btn" :class="{'active-btn': sortBy !== 'rating'}" type="submit" @click=""> Release date </button>
+      <button class="btn" :class="{'active-btn': sortBy === 'rating'}" type="submit" @click=""> Rating </button>
+    </div>
+  </div>
 <div class="container" v-if="getMovies">
   <div class="movies-container">
     <MovieComponent v-for="movie in getMovies" :key="movie.id" :requiredProps="movie"/>
   </div>
   <pagination v-if="totalPages > 1" base-route="Films" :current-page="Number($route.query.page)" :total-pages="totalPages"/>
+  <div class="film-not-found" v-if="totalPages === 0">
+    <p> No films found </p>
+  </div>
 </div>
+
 </template>
 
 <script>
@@ -31,6 +43,7 @@ export default {
       offset: 0,
       search: '',
       searchBy: 'title',
+      sortBy: 'release_date'
     }
   },
   computed: {
@@ -50,6 +63,8 @@ export default {
       this.getMovieList({
         search: this.search,
         searchBy: this.searchBy,
+        sortBy: this.sortBy,
+        sortOrder: 'desc',
         offset: this.offset,
         limit: 9,
       })
@@ -100,6 +115,7 @@ export default {
 
 .container{
   max-width: 100%;
+  height: 100%;
   background-color: #232323;
 }
 .movies-container{
@@ -160,5 +176,30 @@ input {
   display: inline-flex;
   justify-content: flex-start;
   margin-right: 100px;
+}
+.film-not-found{
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 50px;
+  height: 500px;
+}
+.filter-container{
+  display: inline-flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #555555;
+  width: 100%;
+  height: 70px;
+  color: #ffffff;
+}
+.found-films-count{
+  display: flex;
+  left: 20%;
+  padding-left: 80px;
+}
+.sort-filter{
+  display: flex;
+  align-items: center;
+  padding-right: 80px;
 }
 </style>

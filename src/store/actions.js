@@ -16,19 +16,14 @@ const actions = {
         let eth = await response.data;
         commit('ETH_CURRENCY', eth);
     },
-    async getMovieList({commit},{offset, limit, searchBy, search}){
-        let response = await axios.get(`http://react-cdp-api.herokuapp.com/movies`, { params:
-            {
-            offset: offset,
-            limit: limit,
-            searchBy: searchBy,
-            search: search,
-            }
+    async getMovieList({commit},params){
+        let response = await axios.get(`http://react-cdp-api.herokuapp.com/movies`, {
+            params: params
         });
         let movieList = await response.data.data;
         let totalMovies = await response.data.total;
         commit('MOVIE_UPDATE', movieList);
-        commit('TOTAL_MOVIE',totalMovies)
+        commit('TOTAL_MOVIE',totalMovies);
     },
 
 }
