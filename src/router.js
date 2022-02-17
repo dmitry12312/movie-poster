@@ -5,6 +5,7 @@ import FaqView from "./views/FaqView";
 import NotFound from "./views/404";
 import CryptoView from "./views/CryptoView";
 import MoviesView from "./views/MoviesView";
+import FilmCard from "./components/FilmCard";
 
 const routes = [
     {
@@ -36,6 +37,11 @@ const routes = [
         path: "/films",
         name:"Films",
         component: MoviesView,
+    },
+    {
+        path: "/films/:id(\\d+)",
+        name: "FilmCard",
+        component: FilmCard,
     }
 ];
 

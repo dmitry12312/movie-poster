@@ -1,17 +1,19 @@
 <template>
   <div>
-    <div class="film-container">
-      <div class="img-container">
-        <img class="movieImg" :src="requiredProps.poster_path" alt="POSTER">
-      </div>
-      <div class="film-info">
-        <div class="film-row">
-          <div class="film-title"> {{ requiredProps.title }} </div>
-          <div class="film-year"> {{ requiredProps.release_date.slice(0, 4) }} </div>
+    <router-link :to="{ name: 'FilmCard', params: { id: requiredProps.id}}">
+      <div class="film-container">
+        <div class="img-container">
+          <img class="movieImg" :src="requiredProps.poster_path" alt="POSTER">
         </div>
-        <div class="film-genre"> {{ requiredProps.genres.join(' & ') }} </div>
+        <div class="film-info">
+          <div class="film-row">
+            <div class="film-title"> {{ requiredProps.title }} </div>
+            <div class="film-year"> {{ requiredProps.release_date.slice(0, 4) }} </div>
+          </div>
+          <div class="film-genre"> {{ requiredProps.genres.join(' & ') }} </div>
+        </div>
       </div>
-    </div>
+    </router-link>
   </div>
 
 </template>
@@ -76,5 +78,8 @@ export default {
 .film-title {
   font-size: 16px;
   font-weight: bolder;
+}
+router-link{
+  text-decoration: none;
 }
 </style>

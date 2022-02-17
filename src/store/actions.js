@@ -25,6 +25,11 @@ const actions = {
         commit('MOVIE_UPDATE', movieList);
         commit('TOTAL_MOVIE',totalMovies);
     },
+    async getMovieById({commit},id){
+        let response = await axios.get(`http://react-cdp-api.herokuapp.com/movies/${id}`);
+        let movieById = await response.data;
+        commit('MOVIE_ID', movieById);
+    }
 
 }
 export default actions;

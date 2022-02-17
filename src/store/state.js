@@ -7,5 +7,6 @@ const state = {
     eth: null,
     movieList: null,
     totalMovies: null,
+    movieById: null,
 }
 export default state;
