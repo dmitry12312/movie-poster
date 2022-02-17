@@ -1,7 +1,8 @@
 <template>
   <div class="header-container">
     <div class="search-input">
-        <input type="text" v-model="search" @change="setQuery" placeholder="Enter title name">
+        <input v-if="searchBy === 'title'" type="text" v-model="search" @change="setQuery" placeholder="Enter title name">
+        <input v-if="searchBy !== 'title'" type="text" v-model="search" @change="setQuery" placeholder="Enter genre name">
         <button v-if="search" type="reset" @click="clearQuery">Clear</button>
     </div>
     <div class="search-by-button">

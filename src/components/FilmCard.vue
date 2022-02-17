@@ -8,6 +8,9 @@
      <div class="film-title"> {{ getMovieId.title }} </div>
      <div class="film-rating"> {{ getMovieId.vote_average }} </div>
     </div>
+    <div class="search-icon">
+      <router-link :to="{name: 'Films'}"> <img src="../assets/img/searchIcon.jpeg" alt="search"> </router-link>
+    </div>
     <div class="film-genres">
       {{ getMovieId.genres.join(' & ') }}
     </div>
@@ -117,6 +120,13 @@ export default {
 }
 .film-review{
   font-size: 23px;
+  width: 50%;
+  text-align: left;
+}
+.search-icon{
+  position: fixed;
+  top: 15%;
+  right: 3%;
 }
 
 </style>
