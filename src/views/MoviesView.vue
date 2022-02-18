@@ -1,8 +1,7 @@
 <template>
   <div class="header-container">
     <div class="search-input">
-        <input v-if="searchBy === 'title'" type="text" v-model="search" @change="setQuery" placeholder="Enter title name">
-        <input v-if="searchBy !== 'title'" type="text" v-model="search" @change="setQuery" placeholder="Enter genre name">
+        <input type="text" v-model="search" @change="setQuery" :placeholder="searchBy === 'title' ?'Enter title name' : 'Enter genre name'">
         <button v-if="search" type="reset" @click="clearQuery">Clear</button>
     </div>
     <div class="search-by-button">
@@ -119,6 +118,11 @@ export default {
       this.searchBy = this.$route.query.searchBy;
     }
     this.movieListRequest()
+    if(this.totalPages < this.$route.query.page){
+      let query = {...this.$route.query}
+      query.page = 1  ;
+      this.$router.push({name:'Films', query: query})
+    }
   }
 }
 </script>
