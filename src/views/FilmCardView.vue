@@ -77,6 +77,10 @@ export default {
 .film-img{
   display: flex;
   margin: 50px 20px 40px 40px;
+  img{
+    max-width: 100%;
+    max-height: 100%;
+  }
 }
 .film-info{
   display: flex;
