@@ -207,6 +207,7 @@ input {
 }
 .found-films-count{
   display: flex;
+  font-size: 20px;
   left: 20%;
   padding-left: 80px;
 }

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <router-link :to="{ name: 'FilmCard', params: { id: requiredProps.id}}">
+  <div >
+    <router-link class="router-link" :to="{ name: 'FilmCard', params: { id: requiredProps.id}}">
       <div class="film-container">
         <div class="img-container">
           <img class="movieImg" :src="requiredProps.poster_path" alt="POSTER">
@@ -79,7 +79,7 @@ export default {
   font-size: 16px;
   font-weight: bolder;
 }
-router-link{
+.router-link{
   text-decoration: none;
 }
 </style>
