@@ -117,12 +117,12 @@ export default {
       this.search = this.$route.query.search;
       this.searchBy = this.$route.query.searchBy;
     }
-    this.movieListRequest()
     if(this.totalPages < this.$route.query.page){
       let query = {...this.$route.query}
-      query.page = 1  ;
+      query.page = 1;
       this.$router.push({name:'Films', query: query})
     }
+    this.movieListRequest()
   }
 }
 </script>

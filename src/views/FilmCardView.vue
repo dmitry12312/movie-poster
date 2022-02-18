@@ -1,33 +1,35 @@
 <template>
   <meta name="viewport" content="width=device-width">
-<div v-if="getMovieId" class="film-container">
-  <div class="film-img">
-    <img :src="getMovieId.poster_path" alt="poster">
+  <div class="background-image">
+<div v-if="getMovieById" class="film-container">
+  <div class="film-img-container">
+    <img class="film-img" :src="getMovieById.poster_path" alt="poster">
   </div>
   <div class="film-info">
     <div class="film-title-rating">
-     <div class="film-title"> {{ getMovieId.title }} </div>
-     <div class="film-rating"> {{ getMovieId.vote_average }} </div>
+     <div class="film-title"> {{ getMovieById.title }} </div>
+     <div class="film-rating"> {{ getMovieById.vote_average }} </div>
     </div>
     <div class="back-icon">
       <img src="../assets/img/backIcon.png" alt="search" @click="$router.back()">
     </div>
     <div class="film-genres">
-      {{ getMovieId.genres.join(' & ') }}
+      {{ getMovieById.genres.join(' & ') }}
     </div>
-    <div v-if="getMovieId.release_date" class="film-date-runtime">
-      <h> Year: </h>
-      <div class="film-runtime" > {{ getMovieId.release_date.slice(0, 4) }} </div>
+    <div v-if="getMovieById.release_date" class="film-date-runtime">
+      <div> Year: </div>
+      <div class="film-runtime" > {{ getMovieById.release_date.slice(0, 4) }} </div>
       </div>
-    <div v-if="getMovieId.runtime" class="film-date-runtime">
-      <h> Duration: </h>
-     <div class="film-runtime"> {{ getMovieId.runtime }} </div>
-      <h>min</h>
+    <div v-if="getMovieById.runtime" class="film-date-runtime">
+      <div> Duration: </div>
+     <div class="film-runtime"> {{ getMovieById.runtime }} </div>
+      <div>min</div>
     </div>
     <div class="film-review">
-    {{ getMovieId.overview }}
+    {{ getMovieById.overview }}
     </div>
   </div>
+</div>
 </div>
 </template>
 
@@ -44,10 +46,10 @@ export default {
   },
   methods:{
     ...mapActions([
-        'getMovieById',
+        'MovieListById',
     ]),
     movieIdRequest(){
-      this.getMovieById(this.movieId);
+      this.MovieListById(this.movieId);
     },
   },
   created() {
@@ -57,40 +59,43 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'getMovieId',
+      'getMovieById',
     ]),
   },
 }
 </script>
 
 <style lang="scss" scoped>
+.background-image{
+  height: 100%;
+  background-image: url(../assets/img/backgroundFilms.jpeg);
+}
 .film-container{
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   max-width: 100%;
   max-height: 100%;
-  background-image: url(../assets/img/backgroundFilms.jpeg);
   color: #ffffff;
 }
 
-.film-img{
+.film-img-container {
   display: flex;
   margin: 50px 20px 40px 40px;
-  img{
-    max-width: 100%;
-    max-height: 100%;
-  }
+}
+.film-img{
+  max-width: 100%;
+  max-height: 100%;
 }
 .film-info{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: start;
+  align-items: flex-start;
   margin: 50px 10px 40px 20px;
   padding: 40px;
   background: rgba(85, 85, 85, 0.5);
-  width: 100%;
+  width: 60%;
 }
 .film-title-rating{
   display: inline-flex;
@@ -150,51 +155,59 @@ export default {
 }
 @media (max-width: 1200px) {
   .film-container{
-    max-width: 1190px;
-    //flex-direction: column;
+    max-width: 100%;
+    flex-direction: column;
   }
-  .film-img img{
+  .film-img{
     max-width: 300px;
+    margin: 0 auto;
   }
   .film-info{
     max-width: 850px;
+    margin: 0 auto;
   }
 }
 @media (max-width: 992px) {
   .film-container{
-    max-width: 990px;
-    flex-direction: column;
-
+    max-width: 100%;
+    flex-direction: column-reverse;
   }
-  .film-img img{
+  .film-img{
     max-width: 650px;
+    margin: 0 auto;
   }
   .film-info{
     max-width: 450px;
+    margin: 0 auto;
   }
 }
 @media (max-width: 767px) {
   .film-container{
-    max-width: none;
-    flex-direction: column;
+    max-width: 100%;
+    flex-direction: column-reverse;
   }
-  .film-img img{
+  .film-img{
     max-width: 650px;
+    margin: 0 auto;
   }
   .film-info{
     max-width: 440px;
+    margin: 0 auto;
   }
 }
 @media (max-width: 542px) {
   .film-container{
-    max-width: 540px;
-    flex-direction: column;
+    max-width: 100%;
+    flex-direction: column-reverse;
+
   }
-  .film-img img{
+  .film-img{
     max-width: 400px;
+    margin: 0 auto;
   }
   .film-info{
     max-width: 350px;
+    margin: 0 auto;
   }
   .film-rating{
     font-size: 15px;
@@ -217,14 +230,17 @@ export default {
 }
 @media (max-width: 450px) {
   .film-container{
-    max-width: 330px;
-    flex-direction: column;
+    max-width: 100%;
+    flex-direction: column-reverse;
+
   }
-  .film-img img{
+  .film-img{
     max-width: 230px;
+    margin: 0 auto;
   }
   .film-info{
     max-width: 200px;
+    margin: 0 auto;
   }
   .film-rating{
     font-size: 15px;

@@ -17,7 +17,7 @@ const mutations = {
     TOTAL_MOVIE(state, totalMovies){
         state.totalMovies = totalMovies;
     },
-    MOVIE_ID(state, movieById){
+    SET_MOVIE_BY_ID(state, movieById){
         state.movieById = movieById;
     }
 }
