@@ -5,7 +5,7 @@ import FaqView from "./views/FaqView";
 import NotFound from "./views/404";
 import CryptoView from "./views/CryptoView";
 import MoviesView from "./views/MoviesView";
-import FilmCard from "./components/FilmCard";
+import FilmCard from "./views/FilmCardView";
 
 const routes = [
     {
@@ -40,7 +40,7 @@ const routes = [
     },
     {
         path: "/films/:id(\\d+)",
-        name: "FilmCard",
+        name: "FilmCardView",
         component: FilmCard,
     }
 ];

@@ -1,7 +1,8 @@
 <template>
+  <meta name="viewport" content="width=device-width">
 <div v-if="getMovieId" class="film-container">
   <div class="film-img">
-    <img :src="getMovieId.poster_path" alt="poster" width="350" height="550">
+    <img :src="getMovieId.poster_path" alt="poster">
   </div>
   <div class="film-info">
     <div class="film-title-rating">
@@ -34,7 +35,7 @@
 import {mapGetters,mapActions} from "vuex";
 
 export default {
-  name: "FilmCard",
+  name: "FilmCardView",
 
   data(){
     return {
@@ -65,23 +66,24 @@ export default {
 <style lang="scss" scoped>
 .film-container{
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   max-width: 100%;
   max-height: 100%;
   background-image: url(../assets/img/backgroundFilms.jpeg);
-  //background-color: #232323;
   color: #ffffff;
 }
+
 .film-img{
   display: flex;
-  //margin: 40px;
-  margin: 50px 40px 40px 40px;
+  margin: 50px 20px 40px 40px;
 }
 .film-info{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: start;
-  margin: 50px 10px 40px 0;
+  margin: 50px 10px 40px 20px;
   padding: 40px;
   background: rgba(85, 85, 85, 0.5);
   width: 100%;
@@ -109,7 +111,6 @@ export default {
   display: inline-flex;
   align-items: baseline;
   font-size: 20px;
-
 }
 .film-runtime{
   color: rgba(204, 138, 181, 0.85);
@@ -123,7 +124,7 @@ export default {
   text-align: left;
 }
 .back-icon{
-  position: fixed;
+  position: absolute;
   top: 60px;
   left: 1%;
   background: rgb(183,226,213);
@@ -142,6 +143,103 @@ export default {
 }
 .film-runtime-row{
   display: inline-flex;
+}
+@media (max-width: 1200px) {
+  .film-container{
+    max-width: 1190px;
+    //flex-direction: column;
+  }
+  .film-img img{
+    max-width: 300px;
+  }
+  .film-info{
+    max-width: 850px;
+  }
+}
+@media (max-width: 992px) {
+  .film-container{
+    max-width: 990px;
+    flex-direction: column;
+
+  }
+  .film-img img{
+    max-width: 650px;
+  }
+  .film-info{
+    max-width: 450px;
+  }
+}
+@media (max-width: 767px) {
+  .film-container{
+    max-width: none;
+    flex-direction: column;
+  }
+  .film-img img{
+    max-width: 650px;
+  }
+  .film-info{
+    max-width: 440px;
+  }
+}
+@media (max-width: 542px) {
+  .film-container{
+    max-width: 540px;
+    flex-direction: column;
+  }
+  .film-img img{
+    max-width: 400px;
+  }
+  .film-info{
+    max-width: 350px;
+  }
+  .film-rating{
+    font-size: 15px;
+  }
+  .film-title{
+    font-size: 20px;
+  }
+  .film-genres{
+    font-size: 15px;
+  }
+  .film-date-runtime{
+    font-size: 15px;
+  }
+  .film-runtime{
+    font-size: 20px;
+  }
+  .film-review{
+    font-size: 15px;
+  }
+}
+@media (max-width: 450px) {
+  .film-container{
+    max-width: 330px;
+    flex-direction: column;
+  }
+  .film-img img{
+    max-width: 230px;
+  }
+  .film-info{
+    max-width: 200px;
+  }
+  .film-rating{
+    font-size: 15px;
+  }
+  .film-title{
+    font-size: 20px;
+  }
+  .film-genres{
+    font-size: 15px;
+  }
+  .film-date-runtime{
+    font-size: 15px;
+  }
+  .film-runtime{
+    font-size: 20px;
+  }
+  .film-review{
+    font-size: 15px;
+  }
 }
 
 </style>

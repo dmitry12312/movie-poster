@@ -1,6 +1,6 @@
 <template>
   <div >
-    <router-link class="router-link" :to="{ name: 'FilmCard', params: { id: requiredProps.id}}">
+    <router-link class="router-link" :to="{ name: 'FilmCardView', params: { id: requiredProps.id}}">
       <div class="film-container">
         <div class="img-container">
           <img class="movieImg" :src="requiredProps.poster_path" alt="POSTER">
