@@ -74,14 +74,14 @@ export default {
 .film-img{
   display: flex;
   //margin: 40px;
-  margin: 100px 40px 40px 40px;
+  margin: 50px 40px 40px 40px;
 }
 .film-info{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: start;
-  margin: 100px 10px 40px 0;
+  margin: 50px 10px 40px 0;
   padding: 40px;
   background: rgba(85, 85, 85, 0.5);
   width: 100%;
@@ -124,11 +124,15 @@ export default {
 }
 .back-icon{
   position: fixed;
-  top: 10%;
-  //left: 3%;
-  left: 3%;
-  background-color: rgba(85, 85, 85, 0.4);
+  top: 60px;
+  left: 1%;
+  background: rgb(183,226,213);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 0.00005) 73%);
 
+  img {
+    height: 40px;
+    object-fit: contain;
+  }
 }
 .back-icon:hover{
   background-color: #555555;
