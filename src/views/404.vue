@@ -1,7 +1,6 @@
 <template>
-<h1>Ваш пони не найден</h1>
-  <h2>Попробуйте другой</h2>
-
+  <h1>404</h1>
+  <h1>Page not found</h1>
 </template>
 
 <script>
