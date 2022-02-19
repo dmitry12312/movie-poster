@@ -8,23 +8,23 @@ const actions = {
     },
     async btcCur({commit}){
         let response = await axios.get('https://api.coindesk.com/v1/bpi/currentprice.json');
-        let btc = await response.data;
-        commit('BTC_CURRENCY', btc);
+        commit('BTC_CURRENCY', await response.data);
     },
     async ethCur({commit}){
         let response = await axios.get('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=BTC,USD,EUR,GBP',);
-        let eth = await response.data;
-        commit('ETH_CURRENCY', eth);
+        commit('ETH_CURRENCY', await response.data);
     },
     async getMovieList({commit},params){
         let response = await axios.get(`http://react-cdp-api.herokuapp.com/movies`, {
             params: params
         });
-        let movieList = await response.data.data;
-        let totalMovies = await response.data.total;
-        commit('MOVIE_UPDATE', movieList);
-        commit('TOTAL_MOVIE',totalMovies);
+        commit('MOVIE_UPDATE', await response.data.data);
+        commit('TOTAL_MOVIE',await response.data.total);
     },
+    async MovieListById({commit}, id){
+        let response = await axios.get(`http://react-cdp-api.herokuapp.com/movies/${id}`);
+        commit('SET_MOVIE_BY_ID', await response.data);
+    }
 
 }
 export default actions;

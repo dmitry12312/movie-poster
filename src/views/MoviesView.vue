@@ -1,7 +1,7 @@
 <template>
   <div class="header-container">
     <div class="search-input">
-        <input type="text" v-model="search" @change="setQuery" placeholder="Enter title name">
+        <input type="text" v-model="search" @change="setQuery" :placeholder="searchBy === 'title' ?'Enter title name' : 'Enter genre name'">
         <button v-if="search" type="reset" @click="clearQuery">Clear</button>
     </div>
     <div class="search-by-button">
@@ -13,9 +13,9 @@
   <div class="filter-container">
     <p v-if="getTotalMovies > 1" class="found-films-count"> {{ getTotalMovies }} movie found </p>
     <div class="sort-filter">
-      <p> SORT BY </p>
-      <button class="btn" :class="{'active-btn': sortBy !== 'rating'}" type="submit" @click=""> Release date </button>
-      <button class="btn" :class="{'active-btn': sortBy === 'rating'}" type="submit" @click=""> Rating </button>
+      <p class="search-by-text"> SORT BY </p>
+      <button class="btn" :class="{'active-btn': sortBy !== 'vote_average'}" type="submit" @click="sortByReleaseDate"> Release date </button>
+      <button class="btn" :class="{'active-btn': sortBy === 'vote_average'}" type="submit" @click="sortByRating"> Rating </button>
     </div>
   </div>
 <div class="container" v-if="getMovies">
@@ -87,10 +87,20 @@ export default {
       this.setQuery();
     },
     searchByTitle(){
-      this.$emit(this.searchBy = 'title')
+      this.$emit(this.searchBy = 'title');
+      this.movieListRequest();
     },
     searchByGenre(){
-      this.$emit(this.searchBy = 'genres')
+      this.$emit(this.searchBy = 'genres');
+      this.movieListRequest();
+    },
+    sortByReleaseDate(){
+      this.$emit(this.sortBy = 'release_date');
+      this.movieListRequest();
+    },
+    sortByRating(){
+      this.$emit(this.sortBy = 'vote_average');
+      this.movieListRequest();
     }
   },
   watch: {
@@ -106,6 +116,11 @@ export default {
     if(this.$route.query.search){
       this.search = this.$route.query.search;
       this.searchBy = this.$route.query.searchBy;
+    }
+    if(this.totalPages < this.$route.query.page){
+      let query = {...this.$route.query}
+      query.page = 1;
+      this.$router.push({name:'Films', query: query})
     }
     this.movieListRequest()
   }
@@ -161,10 +176,10 @@ input {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 90%;
+  width: 85%;
 }
 .btn{
-  background-color: rgba(35, 35, 35, 0.8);
+  background-color: rgba(66, 66, 66, 0.8);
   width: 80px;
   color: #ffffff;
   border: none;
@@ -176,7 +191,7 @@ input {
 .search-by-text{
   display: inline-flex;
   justify-content: flex-start;
-  margin-right: 100px;
+  margin-right: 20px;
 }
 .film-not-found{
   color: #ffffff;
@@ -191,10 +206,12 @@ input {
   background: #555555;
   width: 100%;
   height: 70px;
+  font-weight: bold;
   color: #ffffff;
 }
 .found-films-count{
   display: flex;
+  font-size: 20px;
   left: 20%;
   padding-left: 80px;
 }

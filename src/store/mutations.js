@@ -16,6 +16,9 @@ const mutations = {
     },
     TOTAL_MOVIE(state, totalMovies){
         state.totalMovies = totalMovies;
+    },
+    SET_MOVIE_BY_ID(state, movieById){
+        state.movieById = movieById;
     }
 }
 export default mutations;
