@@ -13,19 +13,19 @@
       </button>
     </div>
   </div>
-  <div class="filter-container">
-    <p v-if="getTotalMovies > 1" class="found-films-count"> {{ getTotalMovies }} movie found </p>
-    <div class="sort-filter">
-      <p class="search-by-text"> SORT BY </p>
-      <button class="btn" :class="{'active-btn': sortBy !== 'vote_average'}" type="submit" @click="sortByReleaseDate">
-        Release date
-      </button>
-      <button class="btn" :class="{'active-btn': sortBy === 'vote_average'}" type="submit" @click="sortByRating">
-        Rating
-      </button>
+  <div class="container" v-if="!isLoad && getMovies">
+    <div class="filter-container">
+      <p v-if="getTotalMovies > 1" class="found-films-count"> {{ getTotalMovies }} movie found </p>
+      <div class="sort-filter">
+        <p class="search-by-text"> SORT BY </p>
+        <button class="btn" :class="{'active-btn': sortBy !== 'vote_average'}" type="submit" @click="sortByReleaseDate">
+          Release date
+        </button>
+        <button class="btn" :class="{'active-btn': sortBy === 'vote_average'}" type="submit" @click="sortByRating">
+          Rating
+        </button>
+      </div>
     </div>
-  </div>
-  <div class="container" v-if="getMovies">
     <div class="movies-container">
       <MovieComponent v-for="movie in getMovies" :key="movie.id" :requiredProps="movie"/>
     </div>
@@ -35,6 +35,11 @@
       <p> No films found </p>
     </div>
   </div>
+  <div v-if="isLoad" class="loader-container">
+    <div class="loader">
+      <LoaderComponent color="rgba(204, 138, 181, 0.85)" scale="1.5" />
+    </div>
+  </div>
 
 </template>
 
@@ -42,18 +47,20 @@
 import {mapActions, mapGetters} from "vuex";
 import MovieComponent from "../components/MovieComponent";
 import Pagination from "../components/Pagination";
+import LoaderComponent from "../components/LoaderComponent";
 
 const FILMS_PER_PAGE = 9;
 export default {
   name: "MoviesView",
-  components: {Pagination, MovieComponent},
+  components: {LoaderComponent, Pagination, MovieComponent},
   data() {
     return {
       offset: 0,
       FILMS_PER_PAGE,
       search: '',
       searchBy: 'title',
-      sortBy: 'release_date'
+      sortBy: 'release_date',
+      isLoad: true,
     }
   },
   computed: {
@@ -70,6 +77,7 @@ export default {
 
     movieListRequest() {
       this.offset = this.$route.query.page ? (this.$route.query.page - 1) * this.FILMS_PER_PAGE : 0;
+      this.isLoad = true;
       this.getMovieList({
         search: this.search,
         searchBy: this.searchBy,
@@ -77,7 +85,7 @@ export default {
         sortOrder: 'desc',
         offset: this.offset,
         limit: this.FILMS_PER_PAGE,
-      })
+      }).then(() => (this.isLoad = false))
     },
     setQuery() {
       if (this.search) {
@@ -240,5 +248,15 @@ input {
   display: flex;
   align-items: center;
   padding-right: 80px;
+}
+.loader-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #232323;
+}
+.loader{
+  margin-top: 100px;
+  height: 100vh;
 }
 </style>
